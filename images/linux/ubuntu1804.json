@@ -33,7 +33,7 @@
     "post-processors": [
         {
             "type": "docker-tag",
-            "repository": "rmfurth/ubuntu-runner",
+            "repository": "bugswarm/ubuntu-runners",
             "tags": ["18.04"]
         }
     ],
