@@ -22,10 +22,6 @@ Describe "Toolset" {
             tools = @("bin/ruby")
             command = "--version"
         }
-        CodeQL = @{
-            tools = @("codeql/codeql")
-            command = "version"
-        }
     }
 
     foreach($tool in $tools) {
