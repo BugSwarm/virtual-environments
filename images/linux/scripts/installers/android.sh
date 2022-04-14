@@ -4,6 +4,9 @@
 ##  Desc:  Installs Android SDK
 ################################################################################
 
+# Skip this step unless we decide to inlcude the Android SDK
+exit 0
+
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/os.sh
 source $HELPER_SCRIPTS/install.sh

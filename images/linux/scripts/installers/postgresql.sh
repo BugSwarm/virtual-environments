@@ -25,10 +25,6 @@ apt install postgresql-$toolsetVersion
 echo "Install libpq-dev"
 apt-get install libpq-dev
 
-# Disable postgresql.service
-systemctl is-active --quiet postgresql.service && systemctl stop postgresql.service
-systemctl disable postgresql.service
-
 rm /etc/apt/sources.list.d/pgdg.list
 
 echo "postgresql $REPO_URL" >> $HELPER_SCRIPTS/apt-sources.txt

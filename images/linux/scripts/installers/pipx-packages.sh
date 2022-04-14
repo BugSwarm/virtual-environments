@@ -6,6 +6,8 @@
 source $HELPER_SCRIPTS/install.sh
 
 export PATH="$PATH:/opt/pipx_bin"
+export PYTHONIOENCODING="UTF-8"
+export LANG="en_US.UTF-8"
 
 pipx_packages=$(get_toolset_value ".pipx[] .package")
 
