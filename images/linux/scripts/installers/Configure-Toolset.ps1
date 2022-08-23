@@ -92,4 +92,4 @@ foreach ($tool in $toolset.toolcache)
     }
 }
 
-Invoke-PesterTests -TestFile "Toolset" -TestName "Toolset"
+# Invoke-PesterTests -TestFile "Toolset" -TestName "Toolset"

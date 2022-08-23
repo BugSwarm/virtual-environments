@@ -10,7 +10,7 @@ rm -rf /tmp/*
 rm -rf /root/.cache
 
 # journalctl
-if command -v journalctl; then
+if [ ! -f /run/systemd/container ] && command -v journalctl; then
     journalctl --rotate
     journalctl --vacuum-time=1s
 fi

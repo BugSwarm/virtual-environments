@@ -37,38 +37,6 @@
                 "14.*",
                 "16.*"
             ]
-        },
-        {
-            "name": "go",
-            "url" : "https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json",
-            "arch": "x64",
-            "platform" : "linux",
-            "versions": [
-                "1.17.*",
-                "1.18.*",
-                "1.19.*"
-            ],
-            "default": "1.17.*"
-        },
-        {
-            "name": "Ruby",
-            "platform_version": "20.04",
-            "arch": "x64",
-            "versions": [
-                "2.5.*",
-                "2.6.*",
-                "2.7.*",
-                "3.0.*",
-                "3.1.*"
-            ]
-        },
-        {
-            "name": "CodeQL",
-            "platform" : "linux",
-            "arch": "x64",
-            "versions": [
-                "*"
-            ]
         }
     ],
     "java": {
