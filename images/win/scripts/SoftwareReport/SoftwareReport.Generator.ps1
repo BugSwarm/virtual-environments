@@ -26,13 +26,10 @@ $markdown += New-MDList -Style Unordered -Lines @(
     "Image Version: $env:IMAGE_VERSION"
 )
 
-if ((Test-IsWin19) -or (Test-IsWin22))
-{
-    $markdown += New-MDHeader "Enabled windows optional features" -Level 2
-    $markdown += New-MDList -Style Unordered -Lines @(
-        "Windows Subsystem for Linux [WSLv1]"
-    )
-}
+$markdown += New-MDHeader "Enabled windows optional features" -Level 2
+$markdown += New-MDList -Style Unordered -Lines @(
+    "Windows Subsystem for Linux [WSLv1]"
+)
 
 $markdown += New-MDHeader "Installed Software" -Level 2
 $markdown += New-MDHeader "Language and Runtime" -Level 3
@@ -119,7 +116,8 @@ $toolsList = @(
     (Get-WinAppDriver),
     (Get-WixVersion),
     (Get-ZstdVersion),
-    (Get-YAMLLintVersion)
+    (Get-YAMLLintVersion),
+    (Get-ImageMagickVersion)
 )
 if (Test-IsWin19) {
     $toolsList += @(

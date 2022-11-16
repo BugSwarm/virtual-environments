@@ -524,22 +524,22 @@ function Get-JazzyVersion {
 }
 
 function Get-ZlibVersion {
-	$zlibVersion = (brew info zlib)[0] | Take-Part -Part 2
+	$zlibVersion = brew info --json zlib | jq -r '.[].installed[].version'
 	return "Zlib $zlibVersion"
 }
 
 function Get-LibXftVersion {
-    $libXftVersion = (brew info libxft)[0] | Take-Part -Part 2
+    $libXftVersion = brew info --json libxft | jq -r '.[].installed[].version'
     return "libXft $libXftVersion"
 }
 
 function Get-LibXextVersion {
-    $libXextVersion = (brew info libxext)[0] | Take-Part -Part 2
+    $libXextVersion = brew info --json libxext | jq -r '.[].installed[].version'
     return "libXext $libXextVersion"
 }
 
 function Get-TclTkVersion {
-    $tcltkVersion = (brew info tcl-tk)[0] | Take-Part -Part 2
+    $tcltkVersion = brew info --json tcl-tk | jq -r '.[].installed[].version'
     return "Tcl/Tk $tcltkVersion"
 }
 
@@ -571,6 +571,20 @@ function Build-PackageManagementEnvironmentTable {
     }
 }
 
+function Build-MiscellaneousEnvironmentTable {
+    return @(
+        @{
+            "Name" = "PARALLELS_DMG_URL"
+            "Value" = $env:PARALLELS_DMG_URL
+        }
+    ) | ForEach-Object {
+        [PSCustomObject] @{
+            "Name" = $_.Name
+            "Value" = $_.Value
+        }
+    }
+}
+
 function Get-GraalVMVersion {
     $version = & "$env:GRAALVM_11_ROOT\java" --version | Select-String -Pattern "GraalVM" | Take-Part -Part 5,6
     return $version
@@ -592,4 +606,9 @@ function Get-CodeQLBundleVersion {
     $CodeQLPath = Join-Path $CodeQLVersionPath -ChildPath "x64" | Join-Path -ChildPath "codeql" | Join-Path -ChildPath "codeql"
     $CodeQLVersion = & $CodeQLPath version --quiet
     return "CodeQL Action Bundle $CodeQLVersion"
+}
+
+function Get-ColimaVersion {
+    $colimaVersion = Run-Command "colima version" | Select-String "colima version" | Take-Part -Part 2
+    return "Colima $colimaVersion"
 }

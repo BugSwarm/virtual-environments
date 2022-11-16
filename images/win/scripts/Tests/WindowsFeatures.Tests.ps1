@@ -10,7 +10,7 @@ Describe "WindowsFeatures" {
         }
     }
 
-    it "Check WSL is on path" -Skip:(-not (Test-IsWin19)) {
+    it "Check WSL is on path" {
         (Get-Command -Name 'wsl') | Should -BeTrue
     }
 }
@@ -72,7 +72,7 @@ Describe "Windows Updates" {
     It "<Title>" -TestCases $testCases {
         $expect = "Successful"
         if ( $Title -match "Microsoft Defender Antivirus" ) {
-            $expect = "Successful", "Failure"
+            $expect = "Successful", "Failure", "InProgress"
         }
 
         $Status | Should -BeIn $expect

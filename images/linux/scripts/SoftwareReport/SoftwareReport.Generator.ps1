@@ -53,14 +53,14 @@ $runtimesList = @(
     (Get-ClangVersions),
     (Get-ClangFormatVersions),
     (Get-ClangTidyVersions),
-    (Get-KotlinVersion)
+    (Get-KotlinVersion),
+    (Get-SwiftVersion)
 )
 
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
     $runtimesList += @(
         (Get-ErlangVersion),
-        (Get-ErlangRebar3Version),
-        (Get-SwiftVersion)
+        (Get-ErlangRebar3Version)
     )
 }
 
@@ -84,6 +84,18 @@ $packageManagementList = @(
 )
 
 $markdown += New-MDList -Style Unordered -Lines ($packageManagementList | Sort-Object)
+
+$markdown += New-MDHeader "Notes:" -Level 5
+$reportHomebrew = @'
+```
+Location: /home/linuxbrew
+Note: Homebrew is pre-installed on image but not added to PATH.
+run the eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" command
+to accomplish this.
+```
+'@
+$markdown += New-MDParagraph -Lines $reportHomebrew
+
 $markdown += New-MDHeader "Environment variables" -Level 4
 $markdown += Build-PackageManagementEnvironmentTable | New-MDTable
 $markdown += New-MDNewLine
@@ -273,9 +285,7 @@ $markdown += New-MDList -Style Unordered -Lines ( $databaseLists | Sort-Object )
 
 $markdown += Build-PostgreSqlSection
 $markdown += Build-MySQLSection
-if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $markdown += Build-MSSQLToolsSection
-}
+$markdown += Build-MSSQLToolsSection
 
 $markdown += New-MDHeader "Cached Tools" -Level 3
 $markdown += Build-CachedToolsSection

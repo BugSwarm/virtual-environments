@@ -20,7 +20,8 @@
                 "3.7.*",
                 "3.8.*",
                 "3.9.*",
-                "3.10.*"
+                "3.10.*",
+                "3.11.*"
             ],
             "default": "3.9.*"
         },
@@ -33,7 +34,8 @@
                 "3.7.*",
                 "3.8.*",
                 "3.9.*",
-                "3.10.*"
+                "3.10.*",
+                "3.11.*"
             ]
         },
         {
@@ -53,9 +55,9 @@
             "arch": "x64",
             "platform" : "win32",
             "versions": [
-                "12.*",
                 "14.*",
-                "16.*"
+                "16.*",
+                "18.*"
             ]
         },
         {
@@ -189,6 +191,8 @@
             "Microsoft.Component.VC.Runtime.UCRTSDK",
             "Microsoft.Net.Component.4.7.TargetingPack",
             "Microsoft.Net.Component.4.7.2.TargetingPack",
+            "Microsoft.Net.Component.4.8.1.SDK",
+            "Microsoft.Net.Component.4.8.1.TargetingPack",
             "Microsoft.VisualStudio.Component.AspNet45",
             "Microsoft.VisualStudio.Component.Azure.ServiceFabric.Tools",
             "Microsoft.VisualStudio.Component.Debugger.JustInTime",
@@ -219,12 +223,8 @@
             "Microsoft.VisualStudio.Component.VC.MFC.ARM.Spectre",
             "Microsoft.VisualStudio.Component.VC.ATL.ARM64",
             "Microsoft.VisualStudio.Component.VC.ATL.ARM64.Spectre",
-            "Microsoft.VisualStudio.Component.VC.ATL.ARM64EC",
-            "Microsoft.VisualStudio.Component.VC.ATL.ARM64EC.Spectre",
             "Microsoft.VisualStudio.Component.VC.MFC.ARM64",
             "Microsoft.VisualStudio.Component.VC.MFC.ARM64.Spectre",
-            "Microsoft.VisualStudio.Component.VC.MFC.ARM64EC",
-            "Microsoft.VisualStudio.Component.VC.MFC.ARM64EC.Spectre",
             "Microsoft.VisualStudio.Component.VC.Modules.x86.x64",
             "Microsoft.VisualStudio.Component.VC.Tools.ARM64",
             "Microsoft.VisualStudio.Component.VC.Tools.ARM64EC",
@@ -373,7 +373,8 @@
             {
                 "name": "cmake.install",
                 "args": [ "--installargs", "ADD_CMAKE_TO_PATH=\"System\"" ]
-            }
+            },
+            { "name": "imagemagick" }
         ]
     },
     "node": {

@@ -66,7 +66,7 @@ function Get-DockerComposeVersionV2 {
 }
 
 function Get-DockerWincredVersion {
-    $dockerCredVersion = $(docker-credential-wincred version)
+    $dockerCredVersion = docker-credential-wincred version | Take-Part -Part 2 | Take-Part -Part 0 -Delimiter "v"
     return "Docker-wincred $dockerCredVersion"
 }
 
@@ -258,7 +258,7 @@ function Get-StackVersion {
 }
 
 function Get-GoogleCloudSDKVersion {
-    (gcloud --version) -match "Google Cloud SDK"
+    (cmd /c "gcloud --version") -match "Google Cloud SDK"
 }
 
 function Get-ServiceFabricSDKVersion {
@@ -306,4 +306,10 @@ function Get-SwigVersion {
     (swig -version | Out-String) -match "version (?<version>\d+\.\d+\.\d+)" | Out-Null
     $swigVersion = $Matches.Version
     return "Swig $swigVersion"
+}
+
+function Get-ImageMagickVersion {
+    (magick -version | Select-String -Pattern "Version") -match "(?<version>\d+\.\d+\.\d+-\d+)" | Out-Null
+    $magickVersion = $Matches.Version
+    return "ImageMagick $magickVersion"
 }
