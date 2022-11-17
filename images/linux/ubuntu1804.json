@@ -34,7 +34,12 @@
         {
             "type": "docker",
             "image": "ubuntu:18.04",
-            "commit": "true"
+            "commit": "true",
+            "changes": [
+                "ENV LC_ALL=C.UTF-8",
+                "ENV LANG=C.UTF-8",
+                "ENV LANGUAGE=C.UTF-8"
+            ]
         }
     ],
     "post-processors": [
@@ -206,7 +211,9 @@
             ],
             "environment_vars": [
                 "HELPER_SCRIPTS={{user `helper_script_folder`}}",
-                "INSTALLER_SCRIPT_FOLDER={{user `installer_script_folder`}}"
+                "INSTALLER_SCRIPT_FOLDER={{user `installer_script_folder`}}",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8"
             ],
             "execute_command": "sudo sh -c '{{ .Vars }} {{ .Path }}'"
         },
