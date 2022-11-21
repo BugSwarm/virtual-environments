@@ -193,8 +193,8 @@ build {
   sources = ["source.docker.build"]
 
   post-processor "docker-tag" {
-    repository = "bugswarm/ubuntu-runners"
-    tags = ["22.04"]
+    repository = "bugswarm/githubactionsjobrunners"
+    tags = ["ubuntu-22.04"]
   }
 
   provisioner "shell" {

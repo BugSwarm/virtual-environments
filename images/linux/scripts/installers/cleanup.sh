@@ -19,6 +19,8 @@ fi
 find /var/log -type f -regex ".*\.gz$" -delete
 find /var/log -type f -regex ".*\.[0-9]$" -delete
 
+rm -rf /*.tar.gz /*.deb
+
 # wipe log files
 find /var/log/ -type f -exec cp /dev/null {} \;
 

@@ -45,7 +45,7 @@
     "post-processors": [
         {
             "type": "docker-tag",
-            "repository": "bugswarm/ubuntu-runners",
+            "repository": "bugswarm/githubactionsjobrunners",
             "tags": ["ubuntu-18.04"]
         }
     ],

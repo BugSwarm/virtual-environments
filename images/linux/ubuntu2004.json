@@ -45,8 +45,8 @@
     "post-processors": [
         {
             "type": "docker-tag",
-            "repository": "bugswarm/ubuntu-runners",
-            "tags": ["20.04"]
+            "repository": "bugswarm/githubactionsjobrunners",
+            "tags": ["ubuntu-20.04"]
         }
     ],
     "provisioners": [
