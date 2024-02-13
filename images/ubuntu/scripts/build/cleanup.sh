@@ -14,10 +14,10 @@ rm -rf /tmp/*
 rm -rf /root/.cache
 
 # journalctl
-if command -v journalctl; then
-    journalctl --rotate
-    journalctl --vacuum-time=1s
-fi
+# if command -v journalctl; then
+#     journalctl --rotate
+#     journalctl --vacuum-time=1s
+# fi
 
 # delete all .gz and rotated file
 find /var/log -type f -regex ".*\.gz$" -delete
