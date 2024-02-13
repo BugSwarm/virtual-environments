@@ -1,8 +1,8 @@
 packer {
   required_plugins {
-    azure = {
-      source  = "github.com/hashicorp/azure"
-      version = "1.4.5"
+    docker = {
+      source  = "github.com/hashicorp/docker"
+      version = ">= 1.0.8"
     }
   }
 }
@@ -143,40 +143,29 @@ variable "vm_size" {
   default = "Standard_D4s_v4"
 }
 
-source "azure-arm" "build_image" {
-  allowed_inbound_ip_addresses           = "${var.allowed_inbound_ip_addresses}"
-  build_resource_group_name              = "${var.build_resource_group_name}"
-  client_cert_path                       = "${var.client_cert_path}"
-  client_id                              = "${var.client_id}"
-  client_secret                          = "${var.client_secret}"
-  image_offer                            = "0001-com-ubuntu-server-jammy"
-  image_publisher                        = "canonical"
-  image_sku                              = "22_04-lts"
-  location                               = "${var.location}"
-  managed_image_name                     = "${local.managed_image_name}"
-  managed_image_resource_group_name      = "${var.managed_image_resource_group_name}"
-  os_disk_size_gb                        = "75"
-  os_type                                = "Linux"
-  private_virtual_network_with_public_ip = "${var.private_virtual_network_with_public_ip}"
-  subscription_id                        = "${var.subscription_id}"
-  temp_resource_group_name               = "${var.temp_resource_group_name}"
-  tenant_id                              = "${var.tenant_id}"
-  virtual_network_name                   = "${var.virtual_network_name}"
-  virtual_network_resource_group_name    = "${var.virtual_network_resource_group_name}"
-  virtual_network_subnet_name            = "${var.virtual_network_subnet_name}"
-  vm_size                                = "${var.vm_size}"
-
-  dynamic "azure_tag" {
-    for_each = var.azure_tags
-    content {
-      name = azure_tag.key
-      value = azure_tag.value
-    }
-  }
+source "docker" "build_image" {
+  image  = "ubuntu:22.04"
+  commit = true
+  changes = [
+    "ENV LC_ALL=C.UTF-8",
+    "ENV LANG=C.UTF-8",
+    "ENV LANGUAGE=C.UTF-8"
+  ]
 }
 
 build {
-  sources = ["source.azure-arm.build_image"]
+  sources = ["source.docker.build_image"]
+
+  post-processor "docker-tag" {
+    repository = "bugswarm/githubactionsjobrunners"
+    tags = ["24.02.ubuntu-22.04"]
+  }
+
+  // Install basic commands (e.g. sudo)
+  provisioner "shell" {
+    execute_command = "sh -c '{{ .Vars }} {{ .Path }}'"
+    inline          = ["apt-get -y update", "apt-get -y install lsb-release sudo rsync curl wget apt-utils"]
+  }
 
   provisioner "shell" {
     execute_command = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
