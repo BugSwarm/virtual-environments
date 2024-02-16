@@ -45,9 +45,7 @@
     },
     "powershellModules": [
         {"name": "MarkdownPS"},
-        {"name": "Microsoft.Graph"},
-        {"name": "Pester"},
-        {"name": "PSScriptAnalyzer"}
+        {"name": "Pester"}
     ],
     "apt": {
         "vital_packages": [
@@ -157,48 +155,12 @@
     },
     "node_modules": [
         {
-            "name": "grunt",
-            "command": "grunt"
-        },
-        {
-            "name": "gulp",
-            "command": "gulp"
-        },
-        {
             "name": "n",
             "command": "n"
         },
         {
-            "name": "parcel",
-            "command": "parcel"
-        },
-        {
             "name": "typescript",
             "command": "tsc"
-        },
-        {
-            "name": "newman",
-            "command": "newman"
-        },
-        {
-            "name": "vercel",
-            "command": "vercel"
-        },
-        {
-            "name": "webpack",
-            "command": "webpack"
-        },
-        {
-            "name": "webpack-cli",
-            "command": "webpack-cli"
-        },
-        {
-            "name": "netlify-cli",
-            "command": "netlify"
-        },
-        {
-            "name": "lerna",
-            "command": "lerna"
         },
         {
             "name": "yarn",
