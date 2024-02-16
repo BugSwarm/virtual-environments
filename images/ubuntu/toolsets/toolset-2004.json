@@ -181,6 +181,50 @@
     },
     "brew": [
     ],
+    "docker": {
+        "images": [
+            "alpine:3.16",
+            "alpine:3.17",
+            "alpine:3.18",
+            "debian:9",
+            "debian:10",
+            "debian:11",
+            "moby/buildkit:latest",
+            "node:16",
+            "node:18",
+            "node:20",
+            "node:16-alpine",
+            "node:18-alpine",
+            "node:20-alpine",
+            "ubuntu:20.04"
+        ],
+        "components": [
+            {
+                "package": "containerd.io",
+                "version": "latest"
+            },
+            {
+                "package": "docker-ce-cli",
+                "version": "24.0.7"
+            },
+            {
+                "package": "docker-ce",
+                "version": "24.0.7"
+            }
+        ],
+        "plugins": [
+            {
+                "plugin": "buildx",
+                "version": "latest",
+                "asset": "linux-amd64"
+            },            
+            {
+                "plugin": "compose",
+                "version": "2.23.3",
+                "asset": "linux-x86_64"
+            }
+        ]
+    },
     "pipx": [
         {
             "package": "yamllint",
@@ -191,6 +235,56 @@
             "cmd": "ansible"
         }
     ],
+    "dotnet": {
+        "aptPackages": [
+            "dotnet-sdk-6.0",
+            "dotnet-sdk-7.0",
+            "dotnet-sdk-8.0"
+        ],
+        "versions": [
+            "6.0",
+            "7.0",
+            "8.0"
+        ],
+        "tools": [
+            { "name": "nbgv", "test": "nbgv --version", "getversion" : "nbgv --version" }
+        ]
+    },
+    "clang": {
+        "versions": [
+            "10",
+            "11",
+            "12"
+        ],
+        "default_version": "11"
+    },
+    "gcc": {
+        "versions": [
+            "g++-9",
+            "g++-10"
+        ]
+    },
+    "gfortran": {
+        "versions": [
+            "gfortran-9",
+            "gfortran-10"
+        ]
+    },
+    "php": {
+        "versions": [
+            "7.4",
+            "8.0",
+            "8.1",
+            "8.2",
+            "8.3"
+        ]
+    },
+    "rubygems": [
+        {"name": "fastlane"}
+    ],
+    "selenium": {
+        "version": "4"
+    },
     "node": {
         "default": "18"
     },
@@ -208,6 +302,12 @@
             "command": "yarn"
         }
     ],
+    "mongodb": {
+        "version": "5.0"
+    },
+    "postgresql": {
+        "version": "14"
+    },
     "pwsh": {
         "version": "7.4"
     },
