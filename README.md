@@ -1,6 +1,8 @@
 
 # GitHub Actions Runner Images
 
+**For BugSwarm-specific documentation and instructions on how to create a BugSwarm runner image, click [here](docs/bugswarm.md).**
+
 **Table of Contents**
 
 - [About](#about)
